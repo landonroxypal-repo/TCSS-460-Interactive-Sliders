@@ -36,6 +36,4 @@ Learning Resource Sources:
    Notes: Used tailwind documentation for additional styling information.
 
 AI Tool Use, if any:
-I used AI tools when I got stuck and the documentation for tailwind CSS was not helpful. Additionally, I used it when recoloring large
-amounts of content such as changing the theme of the overall website from light to dark. Everything else though is
-my own styling and my own work.
+I used AI tools when I got stuck and the documentation for tailwind CSS was not helpful. Additionally, I used it when recoloring large amounts of content such as changing the theme of the overall website from light to dark. Everything else though is my own styling and my own work.
