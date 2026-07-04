@@ -1,0 +1,14 @@
+{
+  "name": "exercise2-start-reduced-live-sliders",
+  "version": "1.0.0",
+  "description": "Reduced starter for TCSS 460 Project Portfolio Gallery",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js -e js,ejs,json"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.14"
+  }
+}

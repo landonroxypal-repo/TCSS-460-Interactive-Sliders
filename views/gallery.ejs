@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head") %>
+
+<body class="bg-slate-950 min-h-screen text-slate-100">
+  <%- include("partials/nav") %>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <header class="mb-8">
+      <h1 class="text-4xl inline-block font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-sky-500 leading-relaxed">
+          Project Gallery
+      </h1>
+      <p class="text-slate-300">
+          View and interact with three of my Engineering portfolio projects featuring both Hardware and Software.
+      </p>
+    </header>
+
+    <section class="grid gap-6 md:grid-cols-3">
+      <% items.forEach(function(item) { %>
+        <article class="bg-slate-900 rounded-xl shadow border border-slate-800 overflow-hidden lg:hover:scale-105 transition
+        transition-time-200">
+          <img src="<%= item.image %>" alt="<%= item.title %>" class="w-full h-48 object-cover bg-white">
+
+          <div class="p-5">
+            <p class="text-sm font-bold text-sky-400 uppercase tracking-wide mb-2">
+              <%= item.category %>
+            </p>
+
+            <h2 class="text-xl font-bold mb-2"><%= item.title %></h2>
+
+            <p class="text-slate-400 mb-4 text-sm"><%= item.date %> </p>
+
+            <p class="text-slate-300 mb-4"><%= item.summary %></p>
+
+            <a href="/gallery/<%= item.slug %>" class="block w-full text-center bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-sky-500 transition">
+              Open Interactive Sliders
+            </a>
+          </div>
+        </article>
+      <% }); %>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head") %>
+
+<body class="bg-slate-950 min-h-screen text-slate-100">
+  <%- include("partials/nav") %>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <a href="/gallery" class="inline-block text-sky-400 font-semibold hover:underline mb-6">
+      ← Back to Gallery
+    </a>
+
+    <section class="grid gap-8 lg:grid-cols-[320px_1fr] items-start">
+      <aside class="bg-slate-900 rounded-2xl shadow border border-slate-800 p-6">
+        <h1 class="text-2xl font-bold mb-2">Image Controls</h1>
+
+        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+            Modify the image with the sliders below.
+        </p>
+
+        <!--
+          Starter example: one working brightness slider is provided.
+          TODO: Add at least TWO more sliders, such as saturation and grayscale.
+        -->
+        <div class="mb-5">
+          <div class="flex justify-between mb-1">
+            <label for="brightness" class="font-semibold text-slate-300">Brightness</label>
+            <span id="brightness-value" class="font-mono text-sm bg-slate-800 text-slate-100 px-2 py-1 rounded">100%</span>
+          </div>
+
+          <input
+            type="range"
+            id="brightness"
+            min="0"
+            max="200"
+            value="100"
+            class="w-full accent-sky-600">
+        </div>
+
+
+        <div class="mb-5">
+          <div class="flex justify-between mb-1">
+            <label for="hue" class="font-semibold text-slate-300">Hue</label>
+            <span id="hue-value" class="font-mono text-sm bg-slate-800 text-slate-100 px-2 py-1 rounded">0</span>
+          </div>
+
+          <input
+            type="range"
+            id="hue"
+            min="0"
+            max="360"
+            value="0"
+            class="w-full accent-sky-600">
+        </div>
+
+        <div class="mb-5">
+          <div class="flex justify-between mb-1">
+            <label for="saturation" class="font-semibold text-slate-300">Saturation</label>
+            <span id="saturation-value" class="font-mono text-sm bg-slate-800 text-slate-100 px-2 py-1 rounded">100%</span>
+          </div>
+
+          <input
+            type="range"
+            id="saturation"
+            min="0"
+            max="200"
+            value="100"
+            class="w-full accent-sky-600">
+        </div>
+
+        <div class="mb-5">
+          <div class="flex justify-between mb-1">
+            <label for="contrast" class="font-semibold text-slate-300">Contrast</label>
+            <span id="contrast-value" class="font-mono text-sm bg-slate-800 text-slate-100 px-2 py-1 rounded">100%</span>
+          </div>
+
+          <input
+            type="range"
+            id="contrast"
+            min="0"
+            max="200"
+            value="100"
+            class="w-full accent-sky-600">
+        </div>
+      </aside>
+
+      <section class="bg-slate-900 rounded-2xl shadow border border-slate-800 p-6">
+        <figure>
+          <div class="bg-black rounded-xl p-5 flex items-center justify-center">
+            <img
+              id="filtered-image"
+              src="<%= item.image %>"
+              alt="<%= item.title %>"
+              class="w-full max-w-xl h-[420px] object-contain rounded-lg bg-white p-4 shadow-lg">
+          </div>
+
+          <figcaption class="mt-5 border-l-4 border-sky-500 pl-4">
+            <p class="text-sm font-bold uppercase tracking-wide text-sky-400 mb-1">
+              <%= item.category %>
+            </p>
+
+            <h2 class="text-3xl font-bold text-slate-100"><%= item.title %></h2>
+
+            <p class="text-slate-300 leading-relaxed mt-3"><%= item.description %></p>
+          </figcaption>
+        </figure>
+
+        <section class="bg-slate-950 border border-slate-800 rounded-xl p-5 mt-6">
+          <h3 class="text-lg font-bold text-slate-100 mb-2">Detail Identifier</h3>
+          <p class="font-mono text-sm text-slate-300">/gallery/<%= item.slug %></p>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+
+  <script>
+    // Starter JavaScript example from Lecture 5 ideas.
+    const brightnessSlider = document.querySelector("#brightness");
+    const brightnessValue = document.querySelector("#brightness-value");
+    const image = document.querySelector("#filtered-image");
+
+    brightnessSlider.addEventListener("input", function () {
+      brightnessValue.textContent = brightnessSlider.value + "%";
+      updateStyle();
+    });
+
+    const hueSlider = document.querySelector("#hue");
+    const hueValue = document.querySelector("#hue-value");
+
+    hueSlider.addEventListener("input", function () {
+      hueValue.textContent = hueSlider.value;
+      updateStyle();
+    });
+
+    const saturationSlider = document.querySelector("#saturation");
+    const saturationValue = document.querySelector("#saturation-value");
+
+    saturationSlider.addEventListener("input", function () {
+      saturationValue.textContent = saturationSlider.value + "%";
+      updateStyle();
+    });
+
+    const contrastSlider = document.querySelector("#contrast");
+    const contrastValue = document.querySelector("#contrast-value");
+
+    contrastSlider.addEventListener("input", function () {
+      contrastValue.textContent = contrastSlider.value + "%";
+      updateStyle();
+    });
+
+    function updateStyle() {
+        image.style.filter = "brightness(" + brightnessSlider.value + "%)"
+        + " hue-rotate(" + hueSlider.value + "deg)"
+        + " saturate(" + saturationSlider.value + "%) "
+        + " contrast(" + contrastSlider.value + "%) ";
+    }
+  </script>
+</body>
+</html>
